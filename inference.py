@@ -55,7 +55,8 @@ if __name__ == '__main__':
 	input_res  = 64
 	data_path  = '../data/b2i_data/thoughtviz_eeg_data/*/*'
 
-	train_batch = load_complete_data(data_path, input_res=input_res, batch_size=batch_size)
+	# train_batch = load_complete_data(data_path, input_res=input_res, batch_size=batch_size)
+	train_batch = load_complete_data(data_path, batch_size=batch_size)
 	X, latent_Y = next(iter(train_batch))
 	# print(latent_Y)
 	latent_Y = latent_Y[:16]
