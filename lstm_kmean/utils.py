@@ -4,8 +4,9 @@ from glob import glob
 from natsort import natsorted
 import tensorflow as tf
 from functools import partial
+from constants import model_path
 
-data_cls = natsorted(glob('../../data/b2i_data/images/train/*'))
+data_cls = natsorted(glob(f'{model_path}/images/train/*'))
 cls2idx  = {key.split(os.path.sep)[-1]:idx for idx, key in enumerate(data_cls, start=0)}
 idx2cls  = {value:key for key, value in cls2idx.items()}
 

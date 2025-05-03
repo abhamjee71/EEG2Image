@@ -14,6 +14,7 @@ import pandas as pd
 import pickle
 from sklearn.cluster import KMeans
 from scipy.optimize import linear_sum_assignment as linear_assignment
+from constants import model_path
 
 style.use('seaborn')
 
@@ -48,11 +49,11 @@ if __name__ == '__main__':
 	test_batch_size  = 256
 	n_classes   = 10
 
-	# data_cls = natsorted(glob('data/thoughtviz_eeg_data/*'))
+	# data_cls = natsorted(glob(f'{model_path}/*'))
 	# cls2idx  = {key.split(os.path.sep)[-1]:idx for idx, key in enumerate(data_cls, start=0)}
 	# idx2cls  = {value:key for key, value in cls2idx.items()}
 
-	with open('../../data/b2i_data/eeg/image/data.pkl', 'rb') as file:
+	with openf'{model_path}/eeg/image/data.pkl', 'rb') as file:
 		data = pickle.load(file, encoding='latin1')
 		train_X = data['x_train']
 		train_Y = data['y_train']
@@ -60,9 +61,9 @@ if __name__ == '__main__':
 		test_Y = data['y_test']
 
 
-	# train_batch = load_complete_data('data/thoughtviz_eeg_data/*/train/*', batch_size=batch_size)
-	# val_batch   = load_complete_data('data/thoughtviz_eeg_data/*/val/*', batch_size=batch_size)
-	# test_batch  = load_complete_data('data/thoughtviz_eeg_data/*/test/*', batch_size=test_batch_size)
+	# train_batch = load_complete_data(f'{model_path}/*/train/*', batch_size=batch_size)
+	# val_batch   = load_complete_data(f'{model_path}/*/val/*', batch_size=batch_size)
+	# test_batch  = load_complete_data(f'{model_path}/*/test/*', batch_size=test_batch_size)
 	train_batch = load_complete_data(train_X, train_Y, batch_size=batch_size)
 	val_batch   = load_complete_data(test_X, test_Y, batch_size=batch_size)
 	test_batch  = load_complete_data(test_X, test_Y, batch_size=test_batch_size)

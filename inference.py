@@ -11,6 +11,7 @@ from natsort import natsorted
 import wandb
 import numpy as np
 import cv2
+from constants import model_path
 
 tf.random.set_seed(45)
 np.random.seed(45)
@@ -53,7 +54,7 @@ if __name__ == '__main__':
 	batch_size = 64
 	latent_dim = 128
 	input_res  = 64
-	data_path  = '../data/b2i_data/thoughtviz_eeg_data/*/*'
+	data_path  = f'{model_path}/*/*'
 
 	# train_batch = load_complete_data(data_path, input_res=input_res, batch_size=batch_size)
 	train_batch = load_complete_data(data_path, batch_size=batch_size)

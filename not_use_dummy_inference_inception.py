@@ -13,6 +13,8 @@ import numpy as np
 import cv2
 from lstm_kmean.model import TripleNet
 import math
+from constants import model_path
+
 # from eval_utils import get_inception_score
 tf.random.set_seed(45)
 np.random.seed(45)
@@ -20,12 +22,12 @@ np.random.seed(45)
 clstoidx = {}
 idxtocls = {}
 
-for idx, item in enumerate(natsorted(glob('data/images/train/*')), start=0):
+for idx, item in enumerate(natsorted(glob(f'{model_path}/images/train/*')), start=0):
 	clsname = os.path.basename(item)
 	clstoidx[clsname] = idx
 	idxtocls[idx] = clsname
 
-image_paths = natsorted(glob('data/images/train/*/*'))
+image_paths = natsorted(glob(f'{model_path}/images/train/*/*'))
 imgdict     = {}
 for path in image_paths:
 	key = path.split(os.path.sep)[-2]
@@ -48,11 +50,11 @@ if __name__ == '__main__':
 	test_batch_size  = 1
 	n_classes   = 10
 
-	# data_cls = natsorted(glob('data/thoughtviz_eeg_data/*'))
+	# data_cls = natsorted(glob(f'{model_path}/*'))
 	# cls2idx  = {key.split(os.path.sep)[-1]:idx for idx, key in enumerate(data_cls, start=0)}
 	# idx2cls  = {value:key for key, value in cls2idx.items()}
 
-	with open('data/eeg/image/data.pkl', 'rb') as file:
+	with open(f'{model_path}/eeg/image/data.pkl', 'rb') as file:
 		data = pickle.load(file, encoding='latin1')
 		train_X = data['x_train']
 		train_Y = data['y_train']
