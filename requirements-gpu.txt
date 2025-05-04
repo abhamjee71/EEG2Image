@@ -1,8 +1,8 @@
 # PyTorch and torchvision for GPU (CUDA 11.0)
 # Install using: pip install torch==1.7.0+cu110 torchvision==0.8.1+cu110 -f https://download.pytorch.org/whl/torch_stable.html
 # For CPU-only fallback, replace with: torch==1.7.0, torchvision==0.8.1
-torch==1.7.0+cu110
-torchvision==0.8.1+cu110
+# torch==1.7.0+cu110
+# torchvision==0.8.1+cu110
 tensorflow-gpu==2.8.0
 
 opencv-python==4.5.4.58
